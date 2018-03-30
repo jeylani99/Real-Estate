@@ -1,0 +1,25 @@
+{% extends 'homesapp/base.html' %}
+
+<html>
+    <head></head>
+    {% block body %}
+    <body>
+        <div class="container-fluid">
+            <div class="jumbotron">
+                <h1>Gama Real Estate</h1>
+                <p>Find the best Properties wherever you are</p>
+            </div>            
+        </div>
+
+        <Center>Select the Location you want to find Properties</Center>
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">Locations</div>
+                {% for location in object_list %}
+                <div class="panel-body"><a href="/homesapp/{{location.id}}">{{location.location_name}}</a></div>
+                {% endfor %}
+            </div>
+        </div>  
+    </body>
+    {% endblock %}
+</html>

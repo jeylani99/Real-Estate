@@ -1,0 +1,106 @@
+{% extends 'homesapp/base.html' %}
+
+{% block body%}
+<html>
+    <head>
+            <style>
+                #map {
+                    height: 400px;
+                    width: 100%;
+                }
+            </style>
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-md-1">
+            </div>
+
+            <div class="col-md-3">
+                <div class="thumnbail">
+                    <img src="{{property.image_url}}" height="320" width="320">
+                    <div class="caption">
+                        <p>{{property.property_name}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="container">
+                    <div class="panel-group">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">Property Details</div>
+                            <div class="panel-body">
+                                <table class="table">
+                                    <tbody>
+                                        
+                                        <tr>
+                                            <td>
+                                                <label><b>Property Nama</b></label>
+                                            </td>
+                                            <td>
+                                                {{property.property_name}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label><b>Property Address</b></label>
+                                            </td>
+                                            <td>
+                                                {{property.address}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label><b>Area Size</b></label>
+                                            </td>
+                                            <td>
+                                                {{property.size}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label><b>Property Age</b></label>
+                                            </td>
+                                            <td>
+                                                {{property.age}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-md-8">
+            <div class="thumbnail">
+                <h3>Location</h3>
+                <div id="map"></div>
+                <script>
+                  function initMap() {
+                    var uluru = {lat: {{property.lat_value}}, long: {{property.lat_value}}};
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                      zoom: 7,
+                      center: uluru
+                    });
+                    var marker = new google.maps.Marker({
+                      position: uluru,
+                      map: map
+                    });
+                  }
+                </script>
+                <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVLfhUSIr4okOZRFb9OzC5-xhi0h1MfGw&callback=initMap">
+                </script>
+            </div>
+        </div>
+    </body>
+</html>
+ 
+{% endblock %}
